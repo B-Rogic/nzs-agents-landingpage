@@ -2,10 +2,21 @@
 
 @theme {
   --color-majorgreen: #093d21;
+  --color-darkgreen: #093d41;
   --color-majororange: #e09427;
   --color-lightgreen: #34c469;
   --color-superlightgreen: #d0eade;
-  --color-semimajorgreen: #448e68;
+  --color-transgreen: #c8e1d5;
+  --color-semimajorgreen: #006838;
+  --color-cardgreen: #1aab67;
+  --color-cardlightgreen: #95edc4;
   --color-majorgray: #b8b8b8;
+  --color-transgray: #fafafa;
+  --color-darkgray: #919191;
+  --color-lightgray: #e5e5e5;
   --text-custom: 30px
+}
+
+body{
+  font-family: var(--font-inter);
 }

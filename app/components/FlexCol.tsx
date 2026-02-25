@@ -4,11 +4,12 @@ type Props = {
     gap?: string,
     className?: string
     children: ReactNode
+    handleClick?: () => void
 }
 
-const FlexCol = ({gap, className, children}: Props) => {
+const FlexCol = ({gap, className, children, handleClick}: Props) => {
   return (
-    <div className={`flex flex-col ${gap || "gap-5"} ${className}`}>{children}</div>
+    <div onClick={handleClick} className={`flex flex-col ${gap || "gap-5"} ${className}`}>{children}</div>
   )
 }
 
