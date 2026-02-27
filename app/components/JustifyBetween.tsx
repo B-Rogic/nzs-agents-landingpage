@@ -2,12 +2,13 @@ import React, { ReactNode } from 'react'
 
 type Props = {
     children: ReactNode
-    className?: string
+    className?: string,
+    justify?: string
 }
 
-const JustifyBetween = ({children, className}: Props) => {
+const JustifyBetween = ({children, className, justify}: Props) => {
   return (
-    <div className={`flex justify-between ${className}`}>
+    <div className={`flex ${justify || "justify-between"} ${className}`}>
         {children}
     </div>
   )

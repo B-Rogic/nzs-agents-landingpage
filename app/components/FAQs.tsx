@@ -41,17 +41,17 @@ const FAQs = (props: Props) => {
         },
     ]
   return (
-    <GlobalContainer className='bg-superlightgreen flex flex-col gap-20'>
-        <JustifyBetween className='items-start'>
+    <GlobalContainer className='bg-superlightgreen flex flex-col gap-10 md:gap-20'>
+        <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
             <div className="flex items-center gap-3 flex-shrink-0 md:w-[30%]">
                 <Question size={25} className='text-semimajorgreen' />
                 <p className="text-semimajorgreen font-semibold">FAQ</p>
             </div>
             <FlexCol className='items-start'>
-                <AnimatedText className='md:pe-20 tracking-tighter' text='Before you start, here are some of the things most people want to know' />
+                <AnimatedText textClass='md:text-5xl text-2xl font-bold' className='md:pe-20 tracking-tighter' text='Before you start, here are some of the things most people want to know' />
             </FlexCol>
         </JustifyBetween>
-        <JustifyBetween className='items-start'>
+        <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
             <FlexCol className='md:w-[30%] md:h-170 justify-between flex-shrink-0 items-start'>
                 <FlexCol className='items-start'>
                     <p className="text-xl font-semibold text-semimajorgreen">Not finding what you need?</p>
@@ -60,13 +60,13 @@ const FAQs = (props: Props) => {
                         <Image src={'https://framerusercontent.com/images/mCD1VlJCvIfXKjek5viuP2SafX4.jpeg?width=736&height=981'} className='w-17 h-18 object-cover rounded-xl' width={1000} height={1000} alt='image' />
                     </div>
                 </FlexCol>
-                <AnimatedButton className='mt-' hover='bg-transparent text-semimajorgreen' text='Ask a question' add={<ArrowRight />} border />
+                <AnimatedButton padding='md:p-3 p-0' className='mt-' hover='bg-transparent text-semimajorgreen' text='Ask a question' add={<ArrowRight />} border />
             </FlexCol>
             <FlexCol>
                 {accordionArray.map((accordion, index) => (
-                    <FlexCol key={index} handleClick={() => setActive(prev => prev === accordion.title ? "" : accordion.title)} gap={`${active === accordion.title ? "gap-3" : "gap-0"} transition-gap duration-500 ease-in-out`} className='p-8 rounded-2xl bg-white'>
+                    <FlexCol key={index} handleClick={() => setActive(prev => prev === accordion.title ? "" : accordion.title)} gap={`${active === accordion.title ? "gap-3" : "gap-0"} transition-gap duration-500 ease-in-out`} className='md:p-8 p-3 rounded-2xl bg-white'>
                         <div className="flex items-center justify-between">
-                            <p className="text-semimajorgreen text-lg font-semibold">{accordion.title}</p>
+                            <p className="text-semimajorgreen md:text-lg font-semibold">{accordion.title}</p>
                             <div className={`"flex justify-center items-center bg-semimajorgreen text-white rounded-2xl cursor-pointer py-1 px-2`}>
                                 <Plus size={25} strokeWidth={1} />
                             </div>

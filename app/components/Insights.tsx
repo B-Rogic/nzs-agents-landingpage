@@ -16,16 +16,16 @@ const Insights = (props: Props) => {
   return (
     <GlobalContainer className='bg-superlightgreen flex flex-col gap-20 py-40'>
         <FlexCol gap='gap-10'>
-            <JustifyBetween className='items-start'>
+            <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
                 <div className="flex items-center gap-3 flex-shrink-0 md:w-[30%]">
                     <BookOpenIcon size={25} className='text-semimajorgreen' />
                     <p className="text-semimajorgreen font-semibold">Insights</p>
                 </div>
                 <FlexCol className='items-start'>
-                    <AnimatedText className='md:pe-20 tracking-tighter' text='We believe in our local markets and products. here is how we maintain the eccosystem:' />
+                    <AnimatedText textClass='md:text-5xl text-2xl font-bold' className='md:pe-20 tracking-tighter' text='We believe in our local markets and products. here is how we maintain the eccosystem:' />
                 </FlexCol>
             </JustifyBetween>
-            <JustifyBetween className='items-start'>
+            <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
                 <p className="text-darkgray md:w-[30%] flex-shrink-0">We didn't just want a website; we wanted a community</p>
                 <FlexCol className='items-start'>
                     <div className="grid md:grid-cols-2 gap-3">

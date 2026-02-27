@@ -13,15 +13,15 @@ type Props = {}
 
 const Experience = (props: Props) => {
   return (
-    <GlobalContainer className='flex justify-between items-center w-full py-40 relative bg-gradient-to-b from-majorgreen to-semimajorgreen'>
-        <JustifyBetween className='items-start'>
+    <GlobalContainer className='flex justify-between items-center w-full md:py-40 py-20 relative bg-gradient-to-b from-majorgreen to-semimajorgreen'>
+        <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
             <div className="flex items-center gap-3 flex-shrink-0 md:w-[30%]">
                 <Stairs size={25} className='text-majororange' />
                 <p className="text-majororange font-semibold">Experience Naijazone</p>
             </div>
             <FlexCol className='items-start'>
-                <AnimatedText changeColor='white' className='md:pe-20 tracking-tighter' text='Experience the vibrant spirit of the Nigerian marketplace, reimagined for the digital age.' />
-                <div className="flex flex-col gap-10 my-20">
+                <AnimatedText textClass='md:text-5xl text-2xl font-bold' changeColor='white' className='md:pe-20 tracking-tighter' text='Experience the vibrant spirit of the Nigerian marketplace, reimagined for the digital age.' />
+                <div className="flex flex-col gap-10 md:my-20">
                     <p className="text-majorgray text-lg md:pe-62">We vet our vendors to ensure you get exactly what you se eon your screen. Our logistics network is optimized fo rthe unique terrain of our cities. Your money stays safe until you confirm that your order is perfect. Every purchase supports a local entrepreneur or a growing Nigerian brand.</p>
                     <div className="flex flex-col gap-5 items-start">
                         <AnimatedButton className='text-white cursor-pointer' padding='p-0' hover='bg-transparent' add={<ArrowRight />} border  text='Sell your products now!' textClassname='text-white' />

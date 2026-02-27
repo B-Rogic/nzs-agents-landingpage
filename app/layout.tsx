@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact";
+import CoverPage from "./components/CoverPage";
+import ContextProvider from "./context/ContextProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +39,14 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <SmoothScroll>
-          {children}
+          <ContextProvider>
+            <Navbar />
+            <CoverPage>
+            {children}
+            <Contact />
+            <Footer />
+            </CoverPage>
+          </ContextProvider>
         </SmoothScroll>
       </body>
     </html>

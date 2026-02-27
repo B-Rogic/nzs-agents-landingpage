@@ -1,3 +1,5 @@
+"use client"
+import { useRef } from "react";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import AnimatedButton from "./components/AnimatedButton";
@@ -14,11 +16,40 @@ import Pricing from "./components/Pricing";
 import FAQs from "./components/FAQs";
 import Insights from "./components/Insights";
 import Contact from "./components/Contact";
+import { useGSAP } from "@gsap/react";
+import { useClickContext } from "./context/ContextProvider";
+import { usePathname } from "next/navigation";
+import gsap from "gsap";
 
 export default function Home() {
+  const homeRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+  const {click} = useClickContext()
+  // useGSAP(() => {
+  //   if(!click) {
+  //     homeRef.current?.classList.add('opacity-0')
+  //   }
+  // })
+
+//   useGSAP(() => {
+//   if(pathname === "/") {
+//     gsap.from(homeRef.current, {
+//       y: 1000,
+//       opacity: 0,
+//       duration: 0.8,
+//       ease: "power3.out"
+//     });
+//   } else {
+//     gsap.to(homeRef.current, {
+//       y: 1000,
+//       opacity: 0,
+//       duration: 0.8,
+//       ease: "power3.out"
+//     });
+//   }
+// }, { scope: homeRef });
   return (
-    <div className="bg-superlightgreen tracking-tighter">
-      <Navbar />
+    <div ref={homeRef} className={`bg-superlightgreen tracking-tighter`}>
       <Hero />
       <HomeAbout />
       <WhyNaijazone />
@@ -31,7 +62,6 @@ export default function Home() {
       <Pricing />
       <FAQs />
       <Insights />
-      <Contact />
     </div>
   );
 }

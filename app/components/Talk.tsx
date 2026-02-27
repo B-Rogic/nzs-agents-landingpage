@@ -101,15 +101,15 @@ const Talk = (props: Props) => {
     // })
   return (
     <>
-        <GlobalContainer className='bg-superlightgreen flex flex-col gap-40 py-40'>
-            <JustifyBetween className='items-start'>
+        <GlobalContainer className='bg-superlightgreen flex flex-col md:gap-40 gap-5 md:py-40 py-10'>
+            <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
                 <div className="flex items-center gap-3 flex-shrink-0 md:w-[30%]">
                     <UsersThreeIcon size={25} className='text-semimajorgreen' />
                     <p className="text-semimajorgreen font-semibold">Talk Naijazone</p>
                 </div>
-                <AnimatedText className='md:pe-30 tracking-tighter' text='No more waiting weeks. Experience lightning-fast checkout and logistics optimized for the Nigerian terrain.' />
+                <AnimatedText textClass='md:text-5xl text-2xl font-bold' className='md:pe-30 tracking-tighter' text='No more waiting weeks. Experience lightning-fast checkout and logistics optimized for the Nigerian terrain.' />
             </JustifyBetween>
-            <div className="flex gap-20">
+            <div className="flex md:flex-row flex-col md:gap-20 gap-5">
                 <div className="md:p-10 p-5 bg-white rounded-3xl flex flex-col justify-between flex-shrink-0">
                     <div className="flex flex-col gap-5 items-center">
                         <div className="flex items-center justify-between w-full">
@@ -151,7 +151,7 @@ const Talk = (props: Props) => {
                         {carouselArray.map((carousel, index) => (
                             <div key={index} ref={(el) => {carouselRef.current[index] = el}} className={`flex flex-col h-90 justify-end absolute transition-opacity duraiton-500 top-1/2 -translate-y-1/2 ${currentIndex === index ? "opacity-100 delay-100" : "opacity-0"} w-full`}
                             >
-                                <span className="text-4xl italic font-bold text-semimajorgreen absolute top-0">{carousel.description}</span>
+                                <span className="md:text-4xl text-lg italic font-bold text-semimajorgreen absolute top-0">{carousel.description}</span>
                                 <div className="flex items-center gap-3">
                                     <Image src={carousel.image} width={1000} height={1000} alt='image' className='w-15 h-15 rounded object-cover' />
                                     <div className="flex flex-col gap-1">
@@ -171,16 +171,16 @@ const Talk = (props: Props) => {
                 </div>
             </div>
             <ThreeColGrid>
-                <div className="flex flex-col gap-5">
-                    <span className="text-7xl font-bold text-black tracking-[-4px]">120k+</span>
+                <div className="flex flex-col gap-5 md:py-0 py-10">
+                    <span className="md:text-7xl text-3xl font-bold text-black md:tracking-[-4px]">120k+</span>
                     <p className="text-darkgray md:pe-50">Product and brand views across categories since launch.</p>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <span className="text-7xl font-bold text-black tracking-[-4px]">4x sales</span>
+                    <span className="md:text-7xl text-3xl font-bold text-black md:tracking-[-4px]">4x sales</span>
                     <p className="text-darkgray md:pe-50">per vendor average each each month.</p>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <span className="text-7xl font-bold text-black tracking-[-4px]">95%</span>
+                    <span className="md:text-7xl text-3xl font-bold text-black md:tracking-[-4px]">95%</span>
                     <p className="text-darkgray md:pe-50">Order fullfilment rate across 300 + vendors.</p>
                 </div>
             </ThreeColGrid>

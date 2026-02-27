@@ -9,24 +9,83 @@ import ThreeColGrid from './ThreeColGrid'
 import image from '@/app/src/images/image.png'
 import Image from 'next/image'
 import { Laptop } from 'lucide-react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+
+import { ScrollTrigger } from 'gsap/all'
+
+gsap.registerPlugin(ScrollTrigger)
 
 type Props = {}
 
 const WhyNaijazone = (props: Props) => {
+    useGSAP(() => {
+        const opacityAnimate = document.querySelectorAll(".opacity-animate")
+        opacityAnimate.forEach((element) => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom",
+                }
+            }).from(element, {
+                opacity: 0,
+                y: 200,
+                duration: 1,
+                ease: "expo.out"
+            })
+        })
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".width-animate",
+                start: "top bottom",
+            }
+        }).from(".width-animate", {
+            scaleX: 0,
+            transformOrigin: "left",
+            duration: 1.5,
+            ease: "expo.inOut"
+        })
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".scale-animate",
+                start: "top bottom",
+            }
+        }).from(".scale-animate", {
+            scale: 1.3,
+            duration: 1.5,
+            ease: "expo.inOut"
+        })
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".rotate-animate",
+                start: "top bottom",
+            }
+        }).from(".rotate-animate", {
+            rotate: 20,
+            right: -500, 
+            scale: 1.2,
+            duration: 1.5,
+            ease: "expo.inOut"
+        }).from(".scale-up", {
+            scale: 0.5, 
+            duration: 1.5,
+            ease: "expo.inOut"
+        }, "<")
+    })
   return (
     <GlobalContainer>
-        <JustifyBetween className='items-start'>
+        <JustifyBetween className='items-start md:flex-row flex-col gap-5'>
             <div className="flex items-center gap-3 flex-shrink-0 md:w-[30%]">
                 <UsersThreeIcon size={25} className='text-semimajorgreen' />
                 <p className="text-semimajorgreen font-semibold">Why Naijazone?</p>
             </div>
             <FlexCol className='items-start'>
-                <AnimatedText className='md:pe-20 tracking-tighter' text='We saw a disconnect: incredible craftsmanship, service and entrepreneurial drive were often limited by physical location or lack of trust in online transactions.' />
+                <AnimatedText textClass='md:text-5xl text-2xl font-bold' className='md:pe-20 tracking-tighter' text='We saw a disconnect: incredible craftsmanship, service and entrepreneurial drive were often limited by physical location or lack of trust in online transactions.' />
                 <p className="tracking-tighter text-darkgray text-lg md:w-100 my-20">We wanted to build a "Mall without Borders" —a place where leatherworker in Aba could seamlessly sell to a professional in Abuja without friction or fear.</p>
             </FlexCol>
         </JustifyBetween>
         <ThreeColGrid>
-            <div className="p-5 rounded-3xl bg-white flex flex-col justify-between">
+            <div className="p-5 rounded-3xl bg-white flex flex-col justify-between opacity-animate">
                 <div className="flex flex-col gap-5">
                     <div className="flex gap-1 items-center">
                         <Money className='text-majororange' size={20} />
@@ -41,7 +100,7 @@ const WhyNaijazone = (props: Props) => {
                     </div>
                     <div className="flex flex-col gap-5">
                         <div className="w-full rounded-full h-2 bg-lightgray">
-                        <div className="h-full w-80 bg-majororange rounded-full flex justify-end items-center">
+                        <div className="h-full md:w-70 width-animate bg-majororange rounded-full flex justify-end items-center">
                             <div className="w-3 h-5 border-white bg-majororange rounded-full border-3"></div>
                         </div>
                         </div>
@@ -53,7 +112,7 @@ const WhyNaijazone = (props: Props) => {
                     </div>
                 </div>
             </div>
-            <div className="p-5 rounded-3xl bg-lightgreen flex flex-col justify-between h-130 overflow-hidden">
+            <div className="p-5 rounded-3xl bg-lightgreen opacity-animate flex flex-col justify-between h-130 overflow-hidden">
                 <div className="flex flex-col gap-5">
                     <div className="flex gap-1 items-center">
                         <Laptop className='text-majororange' size={20} />
@@ -63,7 +122,7 @@ const WhyNaijazone = (props: Props) => {
                         <p className="text-2xl text-white font-semibold tracking-tighter">Whether it's delivery query or a vendor dispute, our dedicated support team is available 24/7 to resolve your issues in real-time.</p>
                         <span className="text-center text-3xl font-bold text-white">Support</span>
                     </div>
-                    <div className="w-full relative flex justify-center">
+                    <div className="w-full relative flex justify-center scale-animate">
                         <div className="w-95 flex flex-col gap-2 rounded-xl bg-semimajorgreen p-3 absolute top-15 z-3">
                             <div className="flex justify-between items-center w-full">
                                 <div className="flex items-center gap-1">
@@ -80,7 +139,7 @@ const WhyNaijazone = (props: Props) => {
                     </div>
                 </div>
             </div>
-            <div className="p-5 rounded-3xl relative overflow-hidden bg-white flex flex-col justify-between">
+            <div className="p-5 rounded-3xl relative overflow-hidden bg-white flex flex-col justify-between md:h-auto h-[30rem] opacity-animate">
                 <div className="flex flex-col gap-5">
                     <div className="flex gap-1 items-center">
                         <Lightning className='text-majororange' size={20}  />
@@ -88,14 +147,16 @@ const WhyNaijazone = (props: Props) => {
                     </div>
                     <p className="text-2xl text-darkgray font-semibold tracking-tighter md:pe-5">We’ve optimized our 'Quick-Sell' dashboard to get vendor products live in minutes.</p>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 scale-up">
                     <p className="text-lg text-lightgray font-semibold">Time to complete</p>
-                    <p className="text-5xl font-semibold text-lightgray">
+                    <p className="md:text-5xl text-2xl font-semibold text-lightgray">
                         <span className="text-semimajorgreen">24 </span>
                          - 36h
                     </p>
                 </div>
-                <Image src={'https://framerusercontent.com/images/ILQcG4XmvVYI803eooW4UNCPUY.png?width=686&height=747'} width={1000} height={1000} alt='clock' className='absolute -right-62 -bottom-40' />
+                <div className="w-[30rem] absolute  -right-80 -bottom-30 rotate-animate">
+                    <Image src={'https://framerusercontent.com/images/ILQcG4XmvVYI803eooW4UNCPUY.png?width=686&height=747'} width={1000} height={1000} alt='clock' />
+                </div>
             </div>
         </ThreeColGrid>
     </GlobalContainer>

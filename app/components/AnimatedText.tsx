@@ -16,17 +16,44 @@ type Props = {
 const AnimatedText = ({text, className, textColor, textClass, changeColor}: Props) => {
     const animationRef = useRef<HTMLHeadingElement>(null)
     useEffect(() => {
-        const splitText = new SplitText(animationRef.current, {type: "words"})
+        const splitText = new SplitText(animationRef.current, {type: "words, lines",})
+        gsap.matchMedia().add("(min-width: 768px)", () => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: animationRef.current, 
+                    start: "top +=500", 
+                    scrub: true
+                }
+            }).to(splitText.words, {
+                color: changeColor || "#006838",
+                stagger: 0.05,
+                ease: 'power4.inOut'
+            })
+        })
+        gsap.matchMedia().add("(max-width: 768px)", () => {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: animationRef.current, 
+                    start: "top +=1000", 
+                    scrub: true
+                }
+            }).to(splitText.words, {
+                color: changeColor || "#006838",
+                stagger: 0.2,
+                ease: 'power4.inOut'
+            })
+        })
         gsap.timeline({
             scrollTrigger: {
                 trigger: animationRef.current, 
-                start: "top center", 
-                scrub: true
+                start: "top bottom",
             }
-        }).to(splitText.words, {
-            color: changeColor || "#006838",
+        }).from(splitText.lines, {
+            y: 100,
+            opacity: 0,
             stagger: 0.2,
-            ease: 'power4.inOut'
+            duration: 1.5,
+            ease: 'expo.inOut'
         })
     }, [])
   return (
